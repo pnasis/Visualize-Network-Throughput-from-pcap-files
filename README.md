@@ -4,7 +4,7 @@ I developed this program during my BSc thesis to visualize network throughput us
 
 ## Installation
 
-Use the package manager [pip3](https://pip.pypa.io/en/stable/) to install the required packages.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the required packages.
 
 ```bash
 pip3 install scapy pandas matplotlib pyarrow
