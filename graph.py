@@ -20,7 +20,7 @@ def calculate_throughput(packets, interval=1):
 
 def plot_throughput(dataframe, save_path=None):
     plt.plot(dataframe['Timestamp'].values, dataframe['Throughput'].values, label='Throughput')
-    plt.xlabel('Time')
+    plt.xlabel('Time (sec)')
     plt.ylabel('Throughput (Mbps)')
     plt.title('Throughput Over Time')
     plt.legend()
