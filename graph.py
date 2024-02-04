@@ -12,7 +12,7 @@ def calculate_throughput(packets, interval=1):
     while current_time < end_time:
         current_interval_packets = [packet for packet in packets
                                      if current_time <= packet.time < current_time + interval]
-        throughput = sum(len(packet) * 8 for packet in current_interval_packets) / interval
+        throughput = sum(len(packet) * 8 for packet in current_interval_packets) / interval / 1e6  # Convert to Mbps
         throughput_data.append({'Timestamp': current_time, 'Throughput': throughput})
         current_time += interval
 
@@ -21,7 +21,7 @@ def calculate_throughput(packets, interval=1):
 def plot_throughput(dataframe, save_path=None):
     plt.plot(dataframe['Timestamp'].values, dataframe['Throughput'].values, label='Throughput')
     plt.xlabel('Time')
-    plt.ylabel('Throughput (bps)')
+    plt.ylabel('Throughput (Mbps)')
     plt.title('Throughput Over Time')
     plt.legend()
     plt.savefig(save_path)
@@ -32,8 +32,7 @@ def main():
     packets = rdpcap(pcap_file)
     print("[+] Pcap file read successfully!")
 
-
-    # Calculate the throughput
+    # Calculate the throughput in Mbps/sec
     print("[+] Calculating throughput...")
     throughput_df = calculate_throughput(packets, interval=1)
     print("[+] Throughput calculated successfully!")
