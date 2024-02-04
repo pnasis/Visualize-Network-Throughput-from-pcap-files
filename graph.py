@@ -24,7 +24,7 @@ def plot_throughput(dataframe, save_path=None):
     plt.ylabel('Throughput (Mbps)')
     plt.title('Throughput Over Time')
     plt.legend()
-    plt.savefig(save_path)
+    plt.savefig('graph.png')
 
 def main():
     print("[+] Reading pcap file...")
@@ -39,10 +39,8 @@ def main():
 
     # Create and save the plot
     print("[+] Creating plot...")
-    home_directory = os.path.expanduser("~")
-    save_path = os.path.join(home_directory, "graph.png")
-    plot_throughput(throughput_df, save_path)
-    print("[+] Plot created successfully and saved at home directory!")
+    plot_throughput(throughput_df)
+    print("[+] Plot created successfully!")
 
 if __name__ == "__main__":
     main()
