@@ -29,7 +29,7 @@ def plot_throughput(dataframe, save_path=None):
 
 def main():
 
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print("Usage: python3 graph.py -f <pcap-file>")
         sys.exit(1)
         
