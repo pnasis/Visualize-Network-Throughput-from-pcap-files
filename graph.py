@@ -2,6 +2,7 @@ from scapy.all import *
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import sys
 
 def calculate_throughput(packets, interval=1):
     throughput_data = []
@@ -27,8 +28,13 @@ def plot_throughput(dataframe, save_path=None):
     plt.savefig('graph.png')
 
 def main():
+
+    if len(sys.argv) != 2:
+        print("Usage: python3 graph.py -f <pcap-file>")
+        sys.exit(1)
+        
     print("[+] Reading pcap file...")
-    pcap_file = "syn-flooding.pcapng"
+    pcap_file = sys.argv[2]
     packets = rdpcap(pcap_file)
     print("[+] Pcap file read successfully!")
 
